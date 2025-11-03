@@ -1,13 +1,12 @@
-# Name Copy
+# Copy All The Names
 
-World of Warcraft Retail addon that allows you to click player names to copy them to clipboard.
+World of Warcraft Retail addon that allows you to copy player names from context menus and battleground scoreboards.
 
 ## Features
 
-- Click player names in chat to copy to clipboard
-- Click player names in raid frames to copy
-- Click player names in party frames to copy
-- Automatic clipboard copy with visual confirmation
+- **Context Menu Copy** - Right-click any player name in chat, frames, or menus to copy their full Name-Realm format
+- **BG Scoreboard Export** - Click "Player Names" button on battleground scoreboard to extract all player names at once
+- Works with party frames, raid frames, friends list, chat links, and group finder
 
 ## Compatibility
 
