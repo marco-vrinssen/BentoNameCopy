@@ -186,6 +186,9 @@ local function showCopyDialog(playerName)
   dialog:Show()
 end
 
+-- Track menus to prevent duplicates
+local processedMenus = {}
+
 -- Add copy button to context menu
 local function addCopyButton(frameOwner, menuRoot, menuContext)
   if InCombatLockdown() or not validateContext(menuRoot, menuContext) then
@@ -196,6 +199,21 @@ local function addCopyButton(frameOwner, menuRoot, menuContext)
   if not (playerName and realmName and menuRoot and menuRoot.CreateButton) then
     return
   end
+  
+  -- Create unique key for this menu instance
+  local menuKey = string.format("%s-%s-%s", tostring(menuRoot), playerName, realmName)
+  
+  -- Skip if already processed
+  if processedMenus[menuKey] then
+    return
+  end
+  
+  processedMenus[menuKey] = true
+  
+  -- Clean up processed menus after menu closes
+  C_Timer.After(0.5, function()
+    processedMenus[menuKey] = nil
+  end)
   
   if menuRoot.CreateDivider then
     menuRoot:CreateDivider()
