@@ -139,6 +139,11 @@ local function createPlayerNamesButton(parentFrame)
     if InCombatLockdown() then
       return
     end
+    
+    if namesDialog then
+      namesDialog:Hide()
+      namesDialog = nil
+    end
 
     C_Timer.After(0.2, function()
       extractPlayerNames(contentFrame, function(playerNames)
